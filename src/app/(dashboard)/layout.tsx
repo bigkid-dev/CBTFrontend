@@ -19,7 +19,7 @@ export default function DashboardLayout({
       <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%]">
         <Link href={"/"} />
         {/* <Image src={"logo.png"} alt="logo" width={32} height={32}/> */}
-        <span className="hidden lg:block">school-app</span>
+        <span className="hidden lg:block font-bold">school-app</span>
         <Menu />
       </div>
 

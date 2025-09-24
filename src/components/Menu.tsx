@@ -1,3 +1,4 @@
+import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,17 +8,23 @@ const Menu = () => {
     <div>
       {menuItems.map((items) => (
         <div className="flex flex-col gap-2" key={items.title}>
-          <span className="hidden lg:block text-gray-400 font-light my-4">{items.title}</span>
-          {items.items.map((i) => (
-            <Link
-              className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2"
-              href={i.href}
-              key={i.label}
-            >
-              <Image src={i.icon} alt="" width={20} height={20} />
-              <span className="hidden lg:block">{i.label}</span>
-            </Link>
-          ))}
+          <span className="hidden md:px-2 lg:block text-gray-400 font-light my-4">
+            {items.title}
+          </span>
+          {items.items.map((i) => {
+            if (i.visible.includes(role)) {
+              return (
+                <Link
+                  className="flex rounded-md hover:bg-blue-50  items-center justify-center lg:justify-start gap-4 text-gray-500 py-2"
+                  href={i.href}
+                  key={i.label}
+                >
+                  <Image src={i.icon} alt="" width={20} height={20} />
+                  <span className="hidden lg:block">{i.label}</span>
+                </Link>
+              );
+            }
+          })}
         </div>
       ))}
     </div>

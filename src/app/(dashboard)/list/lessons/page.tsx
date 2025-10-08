@@ -11,9 +11,6 @@ type Lesson = {
   subject: string;
   class: string;
   teacher: string;
-  capacity: number;
-  grade: number;
-  supervisor: string;
 };
 
 const columns = [
@@ -21,16 +18,10 @@ const columns = [
   {
     header: "Class",
     accessor: "class",
-
   },
   {
-    header: "teacher",
-    accessor: "grade",
-    className: "hidden md:table-cell",
-  },
-  {
-    header: "Supervisor",
-    accessor: "supervisor",
+    header: "Teacher",
+    accessor: "teacher",
     className: "hidden md:table-cell",
   },
 
@@ -47,17 +38,16 @@ const LessonListPage = () => {
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-purple-"
     >
-      <td className="flex p-4 items-center gap-4">{item.name}</td>
-      <td className="hidden md:table-cell">{item.capacity}</td>
-      <td className="hidden md:table-cell">{item.grade}</td>
-      <td className="hidden md:table-cell">{item.supervisor}</td>
+      <td className="flex p-4 items-center gap-4">{item.subject}</td>
+      <td className="hidden md:table-cell">{item.class}</td>
+      <td className="hidden md:table-cell">{item.teacher}</td>
 
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`} />
 
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky-50">
-            <Image src={"/view.png"} alt="" width={14} height={16} />
+          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky-100">
+            <Image src={"/edit.png"} alt="" width={14} height={16} />
           </button>
 
           {role === "admin" && (

@@ -1,22 +1,42 @@
 import Pagination from "@/components/pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import {   role, subjectsData, teachersData } from "@/lib/data";
+import { eventsData, resultsData, role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type Subjects = {
+type Event = {
   id: number;
-  name: string;
-  teachers: string[];
+  title: string;
+  class: string;
+  student: string;
+  date: string;
+  startTime: string;
+  endTime: string;
 };
 
 const columns = [
-  { header: "Subject Name", accessor: "name " },
+  { header: "Title", accessor: "name" },
   {
-    header: "Teachers",
-    accessor: "teachers",
+    header: "Class",
+    accessor: "class",
+    className: "hidden md:table-cell",
+  },
+
+  {
+    header: "Date",
+    accessor: "date",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Start Time",
+    accessor: "startTime",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "End Time",
+    accessor: "endTime",
     className: "hidden md:table-cell",
   },
 
@@ -27,21 +47,20 @@ const columns = [
   },
 ];
 
-const SubjectListPage = () => {
-  const renderRow = (item: Subjects) => (
+const EventListPage = () => {
+  const renderRow = (item: Event) => (
     <tr
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-purple-"
     >
-      <td className="flex p-4 items-center gap-4">
-        {item.name}
-      </td>
-      <td className="hidden md:table-cell">{item.teachers.join(",")}</td>
-      
+      <td className="flex p-4 items-center gap-4">{item.title}</td>
+      <td  >{item.class}</td>
+      <td className="hidden md:table-cell">{item.date}</td>
+      <td className="hidden md:table-cell">{item.startTime}</td>
+      <td className="hidden md:table-cell">{item.endTime}</td>
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`} />
-
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky-100">
             <Image src={"/edit.png"} alt="" width={14} height={16} />
           </button>
@@ -55,11 +74,12 @@ const SubjectListPage = () => {
       </td>
     </tr>
   );
+
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt mt-0">
       {/* TOP */}
       <div className="flex items-center justify-between">
-        <h1 className="hidden md:block text-lg font-semibold">All Subjects</h1>
+        <h1 className="hidden md:block text-lg font-semibold">All Events</h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
@@ -77,10 +97,10 @@ const SubjectListPage = () => {
           </div>
         </div>
       </div>
-      <Table columns={columns} renderRow={renderRow} data={subjectsData} />
+      <Table columns={columns} renderRow={renderRow} data={eventsData} />
       <Pagination />
     </div>
   );
 };
 
-export default SubjectListPage;
+export default EventListPage;

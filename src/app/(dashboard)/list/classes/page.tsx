@@ -55,7 +55,7 @@ const ClassListPage = () => {
           <Link href={`/list/teachers/${item.id}`} />
 
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky-50">
-            <Image src={"/view.png"} alt="" width={14} height={16} />
+            <Image src={"/edit.png"} alt="" width={14} height={16} />
           </button>
 
           {role === "admin" && (

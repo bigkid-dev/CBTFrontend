@@ -1,5 +1,6 @@
 import Announcement from "@/components/Announcement";
 import BigCalendar from "@/components/BigCalender";
+import FormModal from "@/components/FormModal";
 import Performance from "@/components/Performance";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,23 @@ const SinglePage = () => {
             </div>
             <div className="w-2/3 flex flex-col justify-between gap-4">
               <h1 className="text-xl font-semibold">Leonard Snyder</h1>
+              <FormModal
+                table="teacher"
+                type="update"
+                data={{
+                  id: 1,
+                  teacherId: "1234567890",
+                  username: "leo",
+                  firstName: "John Doe",
+                  lastName: "Doe",
+                  email: "john@doe.com",
+                  img: "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  phone: "1234567890",
+                  subjects: ["Math", "Geometry"],
+                  classes: ["1B", "2A", "3C"],
+                  address: "123 Main St, Anytown, USA",
+                }}
+              />
               <p className="text-sm text-gray-500">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               </p>
@@ -119,11 +137,21 @@ const SinglePage = () => {
         <div className="bg-white p-4 rounded-md mb-4">
           <h1 className="text-xl font-semibold">Shortcuts</h1>
           <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
-            <Link className="p-3 rounded-md bg-blue-100" href={"/"}>Teacher&apos; Classes</Link>
-            <Link className="p-3 rounded-md bg-purple-100" href={"/"}>Teacher&apos; Students</Link>
-            <Link className="p-3 rounded-md bg-yellow-100" href={"/"}>Teacher&apos; Lessons</Link>
-            <Link className="p-3 rounded-md bg-pink-50" href={"/"}>Teacher&apos; Classes</Link>
-            <Link href={"/"} className="p-3 rounded-md bg-blue-50">Teacher&apos; Assignment</Link>
+            <Link className="p-3 rounded-md bg-blue-100" href={"/"}>
+              Teacher&apos; Classes
+            </Link>
+            <Link className="p-3 rounded-md bg-purple-100" href={"/"}>
+              Teacher&apos; Students
+            </Link>
+            <Link className="p-3 rounded-md bg-yellow-100" href={"/"}>
+              Teacher&apos; Lessons
+            </Link>
+            <Link className="p-3 rounded-md bg-pink-50" href={"/"}>
+              Teacher&apos; Classes
+            </Link>
+            <Link href={"/"} className="p-3 rounded-md bg-blue-50">
+              Teacher&apos; Assignment
+            </Link>
           </div>
         </div>
         <Performance />

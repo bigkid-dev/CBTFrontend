@@ -1,8 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import TeacherForm from "./forms/TeacherForm";
+import React, { JSX, useState } from "react";
+// import TeacherForm from "./forms/TeacherForm";
+// import StudentForm from "./forms/StudentForms";
+import dynamic from "next/dynamic";
+
+const TeacherForm = dynamic(() => import("./forms/TeacherForm"), {
+  loading: () => <h1>Loading ... </h1>
+});
+const StudentForm = dynamic(() => import("./forms/StudentForms"), {
+  loading: () => <h1>Loading ... </h1>
+});
+
+const forms: {
+  [key: string]: (type: "create" | "update", data?: any) => JSX.Element;
+} = {
+  teacher: (type, data) => <TeacherForm type={type} data={data} />,
+  student: (type, data) => <StudentForm type={type} data={data} />,
+};
 
 const FormModal = ({
   table,

@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -50,7 +51,7 @@ model Teacher {
   subjects  Subject[]
   lessons   Lesson[]
   classes   Class[]
-  birthday  DateTime
+  birthday  DateTime?
 }
 
 model Parent {
@@ -97,7 +98,7 @@ model Subject {
 
 model Lesson {
   id        Int      @id @default(autoincrement())
-  name      String
+  name      String?
   day       Day
   startTime DateTime
   endTime   DateTime

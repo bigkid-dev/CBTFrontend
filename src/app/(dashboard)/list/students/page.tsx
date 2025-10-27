@@ -75,14 +75,14 @@ const TeacherListPage = () => {
       <td className="hidden md:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`} />
+          <Link href={`/list/students/${item.id}`} />
 
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky-50">
             <Image src={"/view.png"} alt="" width={14} height={16} />
           </button>
 
           {role === "admin" && (
-            <FormModal table="student" type="delete" id={item.id} />
+            <FormModal table="student" type="delete" id={`${item.id}`} />
           )}
         </div>
       </td>
@@ -107,7 +107,7 @@ const TeacherListPage = () => {
         </div>
       </div>
       <Table columns={columns} renderRow={renderRow} data={studentsData} />
-      <Pagination />
+      <Pagination page={2} count={8}/>
     </div>
   );
 };

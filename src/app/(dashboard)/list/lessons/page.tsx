@@ -83,7 +83,7 @@ const LessonListPage = () => {
         </div>
       </div>
       <Table columns={columns} renderRow={renderRow} data={lessonsData} />
-      <Pagination />
+      <Pagination page={2} count={8}/>
     </div>
   );
 };

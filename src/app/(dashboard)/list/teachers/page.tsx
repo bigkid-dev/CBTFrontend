@@ -92,10 +92,10 @@ const renderRow = (item: TeacherList) => (
 const TeacherListPage = async ({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
   const { page, ...queryParams } = await searchParams;
-  const p = page ? parseInt(String(page)) : 1;
+  const p = page ? parseInt(page) : 1;
 
   const query: Prisma.TeacherWhereInput = {};
 
@@ -103,12 +103,17 @@ const TeacherListPage = async ({
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
-          case "classId": {
-            query.lessons = {
-              some: {
-                classId: parseInt(value),
-              },
-            };
+          case "classId":
+            {
+              query.lessons = {
+                some: {
+                  classId: parseInt(value),
+                },
+              };
+            }
+            break;
+          case "search": {
+            query.name = { contains: value, mode: "insensitive" };
           }
         }
       }

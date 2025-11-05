@@ -78,7 +78,7 @@ const SubjectListPage = () => {
         </div>
       </div>
       <Table columns={columns} renderRow={renderRow} data={subjectsData} />
-      <Pagination />
+      <Pagination page={2} count={8}/>
     </div>
   );
 };

@@ -91,7 +91,7 @@ const ClassListPage = () => {
         </div>
       </div>
       <Table columns={columns} renderRow={renderRow} data={classesData} />
-      <Pagination />
+      <Pagination page={2} count={8} />
     </div>
   );
 };

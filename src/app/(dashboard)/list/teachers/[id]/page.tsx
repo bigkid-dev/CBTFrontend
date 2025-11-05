@@ -140,7 +140,7 @@ const SinglePage = () => {
             <Link className="p-3 rounded-md bg-blue-100" href={"/"}>
               Teacher&apos; Classes
             </Link>
-            <Link className="p-3 rounded-md bg-purple-100" href={"/"}>
+            <Link className="p-3 rounded-md bg-purple-100" href={"/list/students"}>
               Teacher&apos; Students
             </Link>
             <Link className="p-3 rounded-md bg-yellow-100" href={"/"}>
